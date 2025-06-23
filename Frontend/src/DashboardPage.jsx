@@ -42,11 +42,6 @@ const [user, setUser] = useState(null);
           {/* Notes section */}
           <NotesSection notes={notes} />
         </div>
-
-        {/* Optional: Bottom nav only on small screens */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0">
-          <BottomNavigation />
-        </div>
       </div>
     </div>
   );
