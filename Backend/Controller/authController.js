@@ -150,7 +150,7 @@ const googleLogin = async (req, res) => {
       });
 
     // Redirect without token in URL
-    res.redirect("http://localhost:5173/dashboard");
+    res.redirect("https://note-app-opal-eight.vercel.app/dashboard");
   } catch (err) {
     console.error("Google login error:", err);
     res.status(500).json({ message: "Internal server error" });
