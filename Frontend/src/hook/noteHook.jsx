@@ -1,11 +1,11 @@
-// hook/useNote.js
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createNote, getNotes, deleteNote } from "@/services/api";
+import { toast } from "react-toastify";
 
 export const useNote = () => {
   const queryClient = useQueryClient();
 
-  // ✅ 1. useQuery to fetch notes and cache them
+  // ✅ Fetch notes
   const {
     data: notes = [],
     isLoading,
@@ -14,23 +14,32 @@ export const useNote = () => {
   } = useQuery({
     queryKey: ["notes"],
     queryFn: getNotes,
-  });
-
-  // ✅ 2. useMutation to create a new note
-  const createNoteMutation = useMutation({
-    mutationFn: createNote,
-    onSuccess: () => {
-      // Invalidate cache so it refetches updated notes
-      queryClient.invalidateQueries({ queryKey: ["notes"] });
+    onError: (err) => {
+      toast.error(err?.message || "Failed to fetch notes");
     },
   });
 
-  // ✅ 3. useMutation to delete a note
+  // ✅ Create note
+  const createNoteMutation = useMutation({
+    mutationFn: createNote,
+    onSuccess: () => {
+      toast.success("Note created successfully!");
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
+    },
+    onError: (err) => {
+      toast.error(err?.message || "Failed to create note");
+    },
+  });
+
+  // ✅ Delete note
   const deleteNoteMutation = useMutation({
     mutationFn: deleteNote,
     onSuccess: () => {
-      // Invalidate cache so it refetches updated notes
+      toast.success("Note deleted successfully!");
       queryClient.invalidateQueries({ queryKey: ["notes"] });
+    },
+    onError: (err) => {
+      toast.error(err?.message || "Failed to delete note");
     },
   });
 
