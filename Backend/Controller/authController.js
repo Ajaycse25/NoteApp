@@ -108,13 +108,13 @@ const login = async (req, res, next) => {
     .cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: false,
-      sameSite: "Lax",
+      sameSite: "None",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     })
     .cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: false,
-      sameSite: "Lax",
+      sameSite: "None",
       maxAge: 20 * 60 * 1000, // 20 min
     });
 
@@ -139,13 +139,13 @@ const googleLogin = async (req, res) => {
       .cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: false, // ✅ set to true in production
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: 2 * 60 * 1000, // 2 minutes
       })
       .cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: false, // ✅ set to true in production
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       });
 

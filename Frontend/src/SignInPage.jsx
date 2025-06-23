@@ -40,7 +40,7 @@ export default function SignInPage() {
   const handleGoogleSignIn = () => {
     // Handle Google sign in logic here
     console.log("Google sign in attempted");
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = "https://noteapp-i3ky.onrender.com/api/auth/google";
   };
 
   return (

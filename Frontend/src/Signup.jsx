@@ -35,7 +35,7 @@ export default function SignUpPage() {
 
   const handleGoogleSignUp = () => {
     // Handle Google sign in logic here
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = "https://noteapp-i3ky.onrender.com/api/auth/google";
   };
   return (
     <div className="min-h-screen flex">
