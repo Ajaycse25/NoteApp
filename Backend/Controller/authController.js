@@ -84,6 +84,7 @@ const requestOTP = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
+  console.log(req.body, "hello fro login")
   const { email, otp } = req.body.formData;
   if (!email || !otp) {
     return next(new ValidationError("Email and OTP are required for login"));
@@ -107,13 +108,13 @@ const login = async (req, res, next) => {
   res
     .cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "None",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     })
     .cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "None",
       maxAge: 20 * 60 * 1000, // 20 min
     });
