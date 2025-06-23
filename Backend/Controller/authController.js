@@ -138,13 +138,13 @@ const googleLogin = async (req, res) => {
     res
       .cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: false, // ✅ set to true in production
+        secure: true, // ✅ set to true in production
         sameSite: "None",
-        maxAge: 2 * 60 * 1000, // 2 minutes
+        maxAge: 20 * 60 * 1000, // 2 minutes
       })
       .cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: false, // ✅ set to true in production
+        secure: true, // ✅ set to true in production
         sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       });
