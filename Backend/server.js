@@ -13,7 +13,7 @@ require('./config/googleStrategy'); // Ensure this is imported to initialize Goo
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: true, // Update to match your frontend port
+  origin: "https://note-app-opal-eight.vercel.app", // Update to match your frontend port
   credentials: true, // Allow cookies to be sent with requests
 }));
 
