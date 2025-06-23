@@ -9,10 +9,15 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        await axios.get("https://noteapp-i3ky.onrender.com/api/auth/verify", {
+        const res = await axios.get("https://noteapp-i3ky.onrender.com/api/auth/verify", {
           withCredentials: true, // Important for sending cookies
         });
-        setAuth(true);
+        if(res.data.authenticated){
+          setAuth(true)
+        }else{
+          setAuth(false);
+        }
+        
       } catch (err) {
         setAuth(false);
       }

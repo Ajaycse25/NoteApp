@@ -159,11 +159,11 @@ const googleLogin = async (req, res) => {
 
 const verify = (req, res) => {
   const token = req.cookies.accessToken;
-  if (!token) return res.status(401).json({ message: "Not authenticated" });
+  if (!token) return res.status(401).json({ message: "Not authenticated",authenticated:false });
 
   jwt.verify(token, process.env.SECRET_TOKEN, (err, decoded) => {
     if (err) return res.status(403).json({ message: "Token is not valid" });
-    return res.status(200).json({ message: "Authenticated", user: decoded });
+    return res.status(200).json({ message: "Authenticated", user: decoded, authenticated:true });
   });
 };
 
